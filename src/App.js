@@ -1,6 +1,6 @@
 import CardItem from "./components/CardItem";
-import HeaderItem from "./components/HeaderItem";
-import CartItem from "./components/CartItem";
+import Header from "./components/HeaderItem";
+import Drawer from "./components/CartDrawer";
 
 function App() {
 
@@ -47,31 +47,8 @@ function App() {
 
   return (
     <div className="wrapper">
-
-      <div style={{display: 'none'}}className="overlay">
-        <div className="drawer">
-          <h3 className="cart-title">Корзина</h3>
-
-          <div className="cartList">
-            <CartItem />
-            <CartItem />
-          </div>
-
-          <div className="total-block">
-            <span>Итого:</span>
-            <div></div>
-            <b>9 905 руб.</b>
-          </div>
-
-          <button className="confirm-button">
-            <span>Оформить заказ</span>
-            <img src="/images/arrow.svg" alt="Arrow" />
-          </button>
-
-        </div>
-      </div>
-
-      <HeaderItem />
+      <Drawer />
+      <Header />
       <div className="content">
         <div className="title-block">
           <h1 className="title">Самые популярные</h1>
