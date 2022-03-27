@@ -35,15 +35,14 @@ function App() {
     }
   ];
 
-  const cards = [];
-  clothes.forEach(item => {
-    cards.push(<CardItem
+  const cards = clothes.map(item => {
+    return <CardItem
       key={item.name}
       name={item.name}
       price={item.price}
       imgSrc={item.imgSrc}
-    />)
-  })
+    />
+  });
 
   return (
     <div className="wrapper">
