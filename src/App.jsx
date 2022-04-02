@@ -17,15 +17,26 @@ function App() {
       .then(res => {
         setItems(res.data);
       })
+
+    axios.get('https://62460a29e3450d61b0fa28c9.mockapi.io/cart')
+      .then(res => {
+        setCartItems(res.data);
+      })
   }, [])
 
   const onAddToCart = (item) => {
+    axios.post('https://62460a29e3450d61b0fa28c9.mockapi.io/cart', item);
     setCartItems(prev => [...prev, item]);
   };
+  
+  const onDeleteCartItem = (id) => {
+    axios.delete(`https://62460a29e3450d61b0fa28c9.mockapi.io/cart/${id}`);
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  }
 
   return (
     <div className="wrapper">
-      {cartOpened && <Drawer onClickClose={() => setCartOpened(false)} items={cartItems} />}
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} onDelete={onDeleteCartItem} items={cartItems} />}
       <Header onCartClick={() => setCartOpened(true)} />
       <div className="content">
         <div className="title-block">
@@ -40,10 +51,12 @@ function App() {
             .filter(item => new RegExp(searchValue, 'i').test(item.name))
             .map(item => {
               return <CardItem
-                key={item.name}
-                item={item}
+                key={item.id}
+                name = {item.name}
+                price={item.price}
+                imgSrc={item.imgSrc}
                 onFavorite={() => console.log('Добавили в закладки')}
-                onAddCart={(obj) => onAddToCart(obj)}
+                onAddCart={obj => onAddToCart(obj)}
               />
             })}
         </div>

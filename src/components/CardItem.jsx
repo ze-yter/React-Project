@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-function CardItem({item, onAddCart, onFavorite}) {
+function CardItem({name, price, imgSrc,  onAddCart, onFavorite}) {
 const [isAdded, setIsAdded] = useState(false);
 
 const onClickPlus = () => {
-    onAddCart(item);
+    onAddCart({name, price, imgSrc});
     setIsAdded(!isAdded);
 };
 
@@ -14,13 +14,13 @@ const onClickPlus = () => {
                 <img width={32} height={32} className='' src="images/unliked.svg" alt="Favorite" />
             </div>
             <div className='card__img'>
-                <img width={133} height={112} src={item.imgSrc} alt="" />
+                <img width={133} height={112} src={imgSrc} alt="" />
             </div>
-            <h5>{item.name}</h5>
+            <h5>{name}</h5>
             <div className="flex-objects alignment">
                 <div className="flex-objects column-flex">
                     <span>Цена:</span>
-                    <b>{item.price} руб.</b>
+                    <b>{price} руб.</b>
                 </div>
                 <img 
                 className='button' 

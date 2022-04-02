@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
 
-function CartItem(props) {
+function CartItem({item, onDelete}) {
     return (
         <div className="cartItem">
-            <img className={'cartItem-image'} width={70} height={70} src={props.imgSrc} alt="Shirt" />
+            <img className={'cartItem-image'} width={70} height={70} src={item.imgSrc} alt="Shirt" />
             <div>
-                <p>{props.name}</p>
-                <b>{props.price} руб.</b>
+                <p>{item.name}</p>
+                <b>{item.price} руб.</b>
             </div>
-            <img className="cartItem-buttton" src="images/removeButton.svg" alt="Remove" />
+            <img onClick={() => onDelete(item.id) } className="cartItem-buttton" src="images/removeButton.svg" alt="Remove" />
         </div>
     );
 }
