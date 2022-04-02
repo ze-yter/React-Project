@@ -1,14 +1,23 @@
 import CartItem from "./CartItem";
 
-export default function Drawer() {
+export default function Drawer({ onClickClose, items = [] }) {
+
     return (
-        <div style={{ display: 'none' }} className="overlay">
+        <div className="overlay">
             <div className="drawer">
-                <h3 className="cart-title">Корзина</h3>
+                <div className="title-block">
+                    <h3 className="cart-title">Корзина</h3>
+                    <img onClick={onClickClose} src="images/removeButton.svg" alt="Close" />
+                </div>
 
                 <div className="cartList">
-                    <CartItem />
-                    <CartItem />
+                    {items.map((item) => {
+                        return <CartItem
+                            key={item.name}
+                            name={item.name}
+                            price={item.price}
+                            imgSrc={item.imgSrc} />
+                    })}
                 </div>
 
                 <div className="total-block">
