@@ -318,3 +318,12 @@ header {
     transition: 0.1s ease-in-out;
   }
 }
+
+.cart-empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 100px 20px 0;
+}
