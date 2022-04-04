@@ -15,6 +15,9 @@ function Header(props) {
           <span>7895 руб.</span>
         </li>
         <li>
+          <img width={18} height={18} src="/images/favoriteIcon.svg" alt="Profile" />
+        </li>
+        <li>
           <img width={18} height={18} src="/images/user.svg" alt="Profile" />
         </li>
       </ul>

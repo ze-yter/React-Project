@@ -146,7 +146,7 @@ header {
   }
 }
 
-.products{
+.products {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -319,11 +319,26 @@ header {
   }
 }
 
-.cart-empty{
+.cart-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   flex: 1;
   padding: 100px 20px 0;
+
+  img {
+    margin-bottom: 30px;
+  }
+}
+
+.cart-empty__title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.cart-empty__subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: .4;
 }
