@@ -16,7 +16,7 @@ function CardItem({ name, price, imgSrc, onAddCart, onFavorite }) {
 
     return (
         <div className="card">
-            <div className='favorite' onClick={onClickFavorite}>
+            <div className='favorite button' onClick={onClickFavorite}>
                 <img width={32} height={32} className='' src={isFavorite ? "images/liked.svg" : "images/unliked.svg"} alt="Favorite" />
             </div>
             <div className='card__img'>

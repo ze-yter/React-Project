@@ -43,7 +43,7 @@ export default function Drawer({ onDelete, onClose, items = [] }) {
                     </div>
 
                     <div className="cart-empty">
-                        <img src="/images/cart-empty.svg" alt="Empty Sukka" width={140} height={140} />
+                        <img src="/images/cart-empty.svg" alt="Empty" width={140} height={140} />
                         <h3 className="cart-empty__title">Пусто</h3>
                         <span className="cart-empty__subtitle">Необходимо добавить хотя бы один товар, что бы совершить оплату.</span>
                     </div>
