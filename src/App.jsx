@@ -45,8 +45,15 @@ function App() {
       {cartOpened && <Drawer onClose={() => setCartOpened(false)} onDelete={onDeleteCartItem} items={cartItems} />}
       <Header onCartClick={() => setCartOpened(true)} />
       <div className="content">
+        <nav className="flex-padding">
+          <ul>
+            <li><a href=""><h1 className="change-text">Популярное</h1></a></li>
+            <li><a href=""><h1 className="change-text">Редкое</h1></a></li>
+            <li><a href=""><h1 className="change-text">Дорогое</h1></a></li>
+            <li><a href=""><h1 className="change-text">Скидки</h1></a></li>
+          </ul>
+        </nav>
         <div className="title-block">
-          <h1 className="title">Товары</h1>
           <SearchBlock
             searchValue={searchValue}
             setSearchValue={setSearchValue}
