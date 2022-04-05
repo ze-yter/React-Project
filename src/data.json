@@ -1,0 +1,106 @@
+[
+    {
+      "id": 1,
+      "name": "Куртка VANS MN TORREY BLACK",
+      "price": 6949,
+      "imgSrc": "/images/clothes/1.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 2,
+      "name": "Куртка THE NORTH FACE Y 1996 RETRO",
+      "price": 10799,
+      "imgSrc": "/images/clothes/2.jpg",
+      "favorite": false,
+      "inCart": true
+    },
+    {
+      "id": 3,
+      "name": "Кроссовки PUMA RS-X Фиолетовые",
+      "price": 5456,
+      "imgSrc": "/images/clothes/3.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 4,
+      "name": "Бомбер ADIDAS NEO BLACK",
+      "price": 4769,
+      "imgSrc": "/images/clothes/4.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 5,
+      "name": "Кроссовки Nike Air Max 95 BLACK",
+      "price": 7339,
+      "imgSrc": "/images/clothes/5.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 6,
+      "name": "Кофта AC/DC BLACK",
+      "price": 2445,
+      "imgSrc": "/images/clothes/6.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 7,
+      "name": "Джинсовка Levi’s BLACK",
+      "price": 9979,
+      "imgSrc": "/images/clothes/7.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 8,
+      "name": "Кроссовки New Balance 574M",
+      "price": 6559,
+      "imgSrc": "/images/clothes/8.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 9,
+      "name": "Футболка Nike SB",
+      "price": 3000,
+      "imgSrc": "/images/clothes/9.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 10,
+      "name": "Поло Tommy Hilfiger MW0",
+      "price": 5669,
+      "imgSrc": "/images/clothes/10.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 11,
+      "name": "Рубашка SUFFERINGS - TORCH",
+      "price": 4449,
+      "imgSrc": "/images/clothes/11.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 12,
+      "name": "Кроссовки ADIDAS SUPERSTAR WHITE",
+      "price": 5229,
+      "imgSrc": "/images/clothes/12.jpg",
+      "favorite": false,
+      "inCart": false
+    },
+    {
+      "id": 13,
+      "name": "Кофта Vetements 4ever",
+      "price": 7355,
+      "imgSrc": "/images/clothes/13.jpg",
+      "favorite": false,
+      "inCart": false
+    }
+  ]

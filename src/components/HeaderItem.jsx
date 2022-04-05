@@ -11,8 +11,11 @@ function Header(props) {
       </div>
       <ul className="flex-objects">
         <li className="cart">
-          <img width={18} height={18} src="/images/cart.svg" alt="Cart" />
+          <img className="button" onClick={props.onCartClick} width={18} height={18} src="/images/cart.svg" alt="Cart" />
           <span>7895 руб.</span>
+        </li>
+        <li>
+          <img width={18} height={18} src="/images/favoriteIcon.svg" alt="Profile" />
         </li>
         <li>
           <img width={18} height={18} src="/images/user.svg" alt="Profile" />
