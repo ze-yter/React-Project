@@ -9,7 +9,7 @@ function CartItem({item, onDelete}) {
                 <p>{item.name}</p>
                 <b>{item.price} руб.</b>
             </div>
-            <img onClick={() => onDelete(item.id) } className="cartItem-buttton" src="images/removeButton.svg" alt="Remove" />
+            <img onClick={() => onDelete(item) } className="cartItem-buttton" src="images/removeButton.svg" alt="Remove" />
         </div>
     );
 }

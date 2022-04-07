@@ -8,41 +8,49 @@ import axios from 'axios';
 function App() {
 
   const [items, setItems] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
-  const [favorites, setFavorites] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [cartOpened, setCartOpened] = useState(false);
 
   useEffect(() => {
-    axios.get('https://62460a29e3450d61b0fa28c9.mockapi.io/clothes')
+    axios.get(`http://localhost:3001/clothes`)
       .then(res => {
         setItems(res.data);
       })
-
-    axios.get('https://62460a29e3450d61b0fa28c9.mockapi.io/cart')
-      .then(res => {
-        setCartItems(res.data);
-      })
   }, [])
 
-  const onAddToCart = (item) => {
-    axios.post('https://62460a29e3450d61b0fa28c9.mockapi.io/cart', item);
-    setCartItems(prev => [...prev, item]);
+  const onChangeInCart = (item) => {
+    axios.patch(`http://localhost:3001/clothes/${item.id}`, { inCart: !item.inCart });
+
+    const changedItems = items.map(e => {
+      if (e.id === item.id)
+        return {
+          ...item,
+          inCart: !item.inCart
+        }
+      return e;
+    });
+
+    setItems(changedItems);
   };
 
-  const onDeleteCartItem = (id) => {
-    axios.delete(`https://62460a29e3450d61b0fa28c9.mockapi.io/cart/${id}`);
-    setCartItems(prev => prev.filter(item => item.id !== id));
-  }
-
   const onAddToFavorite = (item) => {
-    axios.post('https://62460a29e3450d61b0fa28c9.mockapi.io/favorites', item);
-    setFavorites(prev => [...prev, item]);
+    axios.patch(`http://localhost:3001/clothes/${item.id}`, { favorite: !item.favorite });
+
+    const changedItems = items.map(e => {
+      if (e.id === item.id)
+        return {
+          ...item,
+          favorite: !item.favorite
+        }
+      return e;
+    });
+
+    setItems(changedItems);
   };
 
   return (
     <div className="wrapper">
-      {cartOpened && <Drawer onClose={() => setCartOpened(false)} onDelete={onDeleteCartItem} items={cartItems} />}
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} onDelete={onChangeInCart} items={items.filter(e => e.inCart == true)} />}
       <Header onCartClick={() => setCartOpened(true)} />
       <div className="content">
         <div className="title-block">
@@ -58,11 +66,9 @@ function App() {
             .map(item => {
               return <CardItem
                 key={item.id}
-                name={item.name}
-                price={item.price}
-                imgSrc={item.imgSrc}
+                item={item}
                 onFavorite={obj => onAddToFavorite(obj)}
-                onAddCart={obj => onAddToCart(obj)}
+                onAddCart={obj => onChangeInCart(obj)}
               />
             })
           }

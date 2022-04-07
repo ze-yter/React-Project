@@ -6,7 +6,6 @@ export default function Drawer({ onDelete, onClose, items = [] }) {
         <div className="overlay">
             {items.length !== 0
                 ?
-
                 <div className="drawer">
                     <div className="title-block">
                         <h3 className="cart-title">Корзина</h3>

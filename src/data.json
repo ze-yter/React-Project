@@ -1,4 +1,5 @@
-[
+{
+  "clothes": [
     {
       "id": 1,
       "name": "Куртка VANS MN TORREY BLACK",
@@ -13,7 +14,7 @@
       "price": 10799,
       "imgSrc": "/images/clothes/2.jpg",
       "favorite": false,
-      "inCart": true
+      "inCart": false
     },
     {
       "id": 3,
@@ -104,3 +105,4 @@
       "inCart": false
     }
   ]
+}
