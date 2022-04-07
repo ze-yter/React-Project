@@ -46,7 +46,7 @@ export default function Drawer({ onDelete, onClose, items = [] }) {
                         <h3 className="cart-empty__title">Пусто</h3>
                         <span className="cart-empty__subtitle">Необходимо добавить хотя бы один товар, что бы совершить оплату.</span>
                     </div>
-                    
+
                     <button onClick={onClose} className="confirm-button">
                         <span>Вернуться к товарам</span>
                     </button>

@@ -1,17 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function CardItem({item, onAddCart, onFavorite }) {
-    const [isAdded, setIsAdded] = useState(false);
-    const [isFavorite, setIsFavorite] = useState(false);
+function CardItem({ item, onAddCart, onFavorite }) {
 
     const onClickPlus = () => {
         onAddCart(item);
-        setIsAdded(!isAdded);
     };
 
     const onClickFavorite = () => {
         onFavorite(item);
-        setIsFavorite(!isFavorite);
     };
 
     return (

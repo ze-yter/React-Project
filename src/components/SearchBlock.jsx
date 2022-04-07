@@ -4,7 +4,7 @@ export default function SearchBlock(props) {
 
     const onChangeSearchInput = (e) => {
         props.setSearchValue(e.target.value);
-      }
+    }
 
     return (
         <div className="search-block">
