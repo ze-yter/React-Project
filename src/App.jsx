@@ -16,6 +16,7 @@ function App() {
       })
   }, [])
 
+
   const onChangeInCart = (item) => {
     axios.patch(`http://localhost:3001/clothes/${item.id}`, { inCart: !item.inCart });
 
@@ -51,7 +52,11 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout items={items} onChangeInCart={onChangeInCart} />}>
           <Route index element={<MainPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
-          <Route path="favorites" element={<FavoritesPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
+          <Route path="favorites" element={<FavoritesPage
+            items={items.filter(e => e.favorite === true)}
+            onChangeInCart={onChangeInCart}
+            onAddToFavorite={onAddToFavorite} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

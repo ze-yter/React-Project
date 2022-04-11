@@ -28,10 +28,10 @@ export default function Drawer({ onDelete, onClose, items = [] }) {
                         <b>9 905 руб.</b>
                     </div>
 
-                    <button className="confirm-button">
-                        <span>Оформить заказ</span>
-                        <img src="/images/arrow.svg" alt="Arrow" />
-                    </button>
+                        <button className="confirm-button">
+                            <span>Оформить заказ</span>
+                            <img src="/images/arrow.svg" alt="Arrow" className="standard-arrow" />
+                        </button>
 
                 </div>
                 :
