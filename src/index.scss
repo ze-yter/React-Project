@@ -297,8 +297,12 @@ header {
   &:hover {
     background-color: lighten(#00c2ff, 10%);
 
-    img {
-      transform: translateX(20px);
+    .standard-arrow {
+      transform: translateX(20px); 
+    }
+
+    .reverse-arrow{
+      transform: translateX(-20px) rotate(180deg);
     }
   }
 
@@ -317,6 +321,24 @@ header {
     left: 30px;
     transition: 0.1s ease-in-out;
   }
+
+  .standard-arrow{
+    position: relative;
+    left: 30px;
+    transition: 0.1s ease-in-out;
+  }
+
+  .reverse-arrow{
+    transform: rotate(180deg);
+    position: relative;
+    left: -30px;
+    transition: 0.1s ease-in-out;
+  }
+}
+
+.bordered{
+
+  width: 325px;
 }
 
 .cart-empty {
@@ -341,4 +363,9 @@ header {
   font-size: 16px;
   font-weight: 400;
   opacity: .4;
+}
+
+.favorites-empty{
+  text-align: center;
+  padding: 225px 0;
 }

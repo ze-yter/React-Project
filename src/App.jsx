@@ -1,15 +1,13 @@
-import CardItem from "./components/CardItem";
-import Header from "./components/HeaderItem";
-import Drawer from "./components/Drawer";
 import { useEffect, useState } from "react";
-import SearchBlock from "./components/SearchBlock";
 import axios from 'axios';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./components/layouts/MainLayout";
+import MainPage from "./pages/MainPage";
+import FavoritesPage from "./pages/FavoritesPage"
 
 function App() {
 
   const [items, setItems] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-  const [cartOpened, setCartOpened] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/clothes`)
@@ -17,6 +15,7 @@ function App() {
         setItems(res.data);
       })
   }, [])
+
 
   const onChangeInCart = (item) => {
     axios.patch(`http://localhost:3001/clothes/${item.id}`, { inCart: !item.inCart });
@@ -49,32 +48,18 @@ function App() {
   };
 
   return (
-    <div className="wrapper">
-      {cartOpened && <Drawer onClose={() => setCartOpened(false)} onDelete={onChangeInCart} items={items.filter(e => e.inCart == true)} />}
-      <Header onCartClick={() => setCartOpened(true)} />
-      <div className="content">
-        <div className="title-block">
-          <h1 className="title">Товары</h1>
-          <SearchBlock
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout items={items} onChangeInCart={onChangeInCart} />}>
+          <Route index element={<MainPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
+          <Route path="favorites" element={<FavoritesPage
+            items={items.filter(e => e.favorite === true)}
+            onChangeInCart={onChangeInCart}
+            onAddToFavorite={onAddToFavorite} />}
           />
-        </div>
-        <div className="products">
-          {items
-            .filter(item => new RegExp(searchValue, 'i').test(item.name))
-            .map(item => {
-              return <CardItem
-                key={item.id}
-                item={item}
-                onFavorite={obj => onAddToFavorite(obj)}
-                onAddCart={obj => onChangeInCart(obj)}
-              />
-            })
-          }
-        </div>
-      </div>
-    </div>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
