@@ -70,7 +70,7 @@
       "price": 3000,
       "imgSrc": "/images/clothes/9.jpg",
       "favorite": false,
-      "inCart": false
+      "inCart": true
     },
     {
       "id": 10,
@@ -78,7 +78,7 @@
       "price": 5669,
       "imgSrc": "/images/clothes/10.jpg",
       "favorite": false,
-      "inCart": false
+      "inCart": true
     },
     {
       "id": 11,

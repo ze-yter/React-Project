@@ -6,8 +6,15 @@ export default function MainPage(props) {
     const [searchValue, setSearchValue] = useState('');
     return (
         <div className="content">
+            <nav className="flex-padding">
+                <ul>
+                    <li><a href=""><h1 className="change-text">Популярное</h1></a></li>
+                    <li><a href=""><h1 className="change-text">Редкое</h1></a></li>
+                    <li><a href=""><h1 className="change-text">Дорогое</h1></a></li>
+                    <li><a href=""><h1 className="change-text">Скидки</h1></a></li>
+                </ul>
+            </nav>
             <div className="title-block">
-                <h1 className="title">Товары</h1>
                 <SearchBlock
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}

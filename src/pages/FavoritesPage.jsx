@@ -12,6 +12,7 @@ export default function FavoritesPage({ items, onAddToFavorite, onChangeInCart }
                         <img width={100} height={100} src="/images/favorite-empty.svg" alt="" />
                         <h2>Закладок нет :с</h2>
                         <p>Вам ничего не нравится?</p>
+                        <br></br>
 
                         <Link to="/">
                             <button className="confirm-button bordered">
