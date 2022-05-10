@@ -433,3 +433,176 @@ header {
   text-align: center;
   padding: 225px 0;
 }
+
+.profile-page {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-field {
+  
+  input {
+    border-radius: 50px;
+    width:350px;
+    margin-bottom: 17px;
+    padding:10px;
+  }
+  
+  .type-2 {
+    background-color: #fafafa;
+    border:0;
+    box-shadow:0 0 4px rgba(0,0,0,0.3);
+    transition: .3s box-shadow;
+  }
+  
+  .type-2:hover {
+    box-shadow:0 0 4px rgba(0,0,0,0.5);
+  }
+}
+
+
+
+.margin-but-pr {
+  margin: 30px;
+}
+
+.margin-but-pic {
+  margin: 15px;
+}
+
+
+.save-button {
+  justify-self: center;
+  background-color: #00c2ff;
+  border: none;
+  border-radius: 50px;
+  width: 240px;
+  height: 45px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background-color: lighten(#00c2ff, 10%);
+  }
+
+  &:active {
+    background-color: darken(#00c2ff, 10%);
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+}
+
+.profile-data {
+  margin-right: 20px;
+  text-align: center;
+  padding: 30px 0;
+
+  width: 400px;
+  height: 500px;
+
+  background: #F1F1F1;
+  border-radius: 18px;
+}
+
+.margin-icon {
+  margin-left: 10px;
+}
+
+.profile-pic {
+  text-align: center;
+  width: 400px;
+  height: 180px;
+
+  background: #F1F1F1;
+  border-radius: 18px;
+
+  
+}
+
+.green-card {
+  justify-self: center;
+  margin-top: -10px;
+  width: 380px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #46CC5B;
+}
+
+.profile-card {
+  margin-top: 20px;
+  text-align: center;
+  width: 400px;
+  height: 300px;
+  display: grid;
+  background: #F1F1F1;
+  border-radius: 18px;
+}
+
+form {
+  width: 350px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  .half input {
+    width: 165px;
+      
+
+      &:first-child {
+        margin-right: 20px;
+      }
+  }
+
+  input, button {
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 10px;
+    
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+  }
+
+  input {
+    color: #1C1D21;
+  }
+
+  button {
+    color: #1C1D21;
+    background: #EEEFF7;
+    font-weight: 600;
+  }
+}
+
+.profile-exit {
+
+  width: 325px;
+  height: 55px;
+  border-radius: 18px;
+  margin-top: 30px;
+  background-color: #E84D20;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background-color: lighten(#E84D20, 10%);
+  }
+
+  &:active {
+    background-color: darken(#E84D20, 10%);
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+}

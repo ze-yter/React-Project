@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout";
 import MainPage from "./pages/MainPage";
 import FavoritesPage from "./pages/FavoritesPage"
+import ProfilePage from "./pages/ProfilePage"
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
             onChangeInCart={onChangeInCart}
             onAddToFavorite={onAddToFavorite} />}
           />
+          <Route path="profile" element={<ProfilePage/>} />
         </Route>
       </Routes>
     </BrowserRouter>

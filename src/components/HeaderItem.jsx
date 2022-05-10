@@ -23,7 +23,9 @@ function Header(props) {
           <span>7895 руб.</span>
         </li>
         <li>
-          <img className="user-logo" width={80} height={80} src="/images/user.jpeg" alt="Profile" />
+          <Link to="profile">
+            <img className="user-logo" width={80} height={80} src="/images/user.jpeg" alt="Profile" />
+          </Link>
         </li>
       </ul>
     </header>
