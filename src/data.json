@@ -104,5 +104,11 @@
       "favorite": false,
       "inCart": false
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Владимир Пупкин"
+    }
   ]
 }

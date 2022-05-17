@@ -1,20 +1,36 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout";
 import MainPage from "./pages/MainPage";
 import FavoritesPage from "./pages/FavoritesPage"
 import ProfilePage from "./pages/ProfilePage"
+import RequireAuth from './hoc/RequireAuth'
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import { useDispatch } from "react-redux";
+import { setUser } from "./store/slices/userSlice";
 
+const storageName = 'userData';
 function App() {
 
   const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get(`http://localhost:3001/clothes`)
       .then(res => {
         setItems(res.data);
       })
+    const user = JSON.parse(localStorage.getItem(storageName));
+    console.log(user)
+    if (user) {
+      dispatch(setUser({
+        email: user.email,
+        id: user.id,
+        token: user.token
+      }))
+    }
   }, [])
 
 
@@ -49,19 +65,23 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainLayout items={items} onChangeInCart={onChangeInCart} />}>
-          <Route index element={<MainPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
-          <Route path="favorites" element={<FavoritesPage
-            items={items.filter(e => e.favorite === true)}
-            onChangeInCart={onChangeInCart}
-            onAddToFavorite={onAddToFavorite} />}
-          />
-          <Route path="profile" element={<ProfilePage/>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={
+        <RequireAuth>
+          <MainLayout items={items} onChangeInCart={onChangeInCart} />
+        </RequireAuth>
+      }>
+        <Route index element={<MainPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
+        <Route path="favorites" element={<FavoritesPage
+          items={items.filter(e => e.favorite === true)}
+          onChangeInCart={onChangeInCart}
+          onAddToFavorite={onAddToFavorite} />}
+        />
+        <Route path="profile" element={<ProfilePage />} />
+      </Route>
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
+    </Routes>
   );
 }
 
