@@ -69,15 +69,15 @@
       "name": "Футболка Nike SB",
       "price": 3000,
       "imgSrc": "/images/clothes/9.jpg",
-      "favorite": false,
-      "inCart": false
+      "favorite": true,
+      "inCart": true
     },
     {
       "id": 10,
       "name": "Поло Tommy Hilfiger MW0",
       "price": 5669,
       "imgSrc": "/images/clothes/10.jpg",
-      "favorite": false,
+      "favorite": true,
       "inCart": false
     },
     {

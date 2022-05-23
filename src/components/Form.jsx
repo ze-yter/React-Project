@@ -5,23 +5,27 @@ export default function Form({title, handleClick}) {
   let [pass, setPass] = useState('');
 
   return (
-    <div>
-      <p>Почта</p>
+    <div className='form-objects'>
+      <div className='profile-field'>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder='biba.boba@gmail.com'
+        placeholder='example@gmail.com'
+        className='type-2 center-flex'
       />
-      <p>Пароль</p>
+      </div>
+      <div className='profile-field'>
       <input
         type="password"
         value={pass}
         onChange={(e) => setPass(e.target.value)}
         placeholder='password'
+        className='type-2 center-flex'
       />
-      <button onClick={() => handleClick(email, pass)}>
-        {title}
+      </div>
+      <button className='enter-button center-flex' onClick={() => handleClick(email, pass)}>
+        <span>OPEN BUBBLESTORE</span>
       </button>
     </div>
   )

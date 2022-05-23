@@ -30,13 +30,13 @@ export default function RegisterPage() {
   }
 
   return (
-    <div>
-      <h1>Register page</h1>
+    <div className='register-login'>
+      <h1 className='center-objects margin-bot'>ЗАРЕГИСТРИРОВАТЬСЯ</h1>
       <Form
-        title={'Зарегистрироваться'}
         handleClick={handleLogin}
       />
-      <Link to="/login">Login Page</Link>
+      <Link to="/login" className='center-objects'><h3 className='change-link'>Login Page</h3></Link>
+      <img width={60} height={60} src="/images/logo.png" alt="Logo" className="company-logo button center-logo" />
     </div>
   )
 }
