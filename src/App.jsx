@@ -10,18 +10,28 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/slices/userSlice";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 
-const storageName = 'userData';
 function App() {
+  const dbRef = ref(getDatabase());
+
+  const storageName = 'userData';
 
   const [items, setItems] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/clothes`)
-      .then(res => {
-        setItems(res.data);
-      })
+    get(child(dbRef, `clothes`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        setItems(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+
     const user = JSON.parse(localStorage.getItem(storageName));
     console.log(user)
     if (user) {
@@ -33,35 +43,44 @@ function App() {
     }
   }, [])
 
+  
+
+  const user = JSON.parse(localStorage.getItem(storageName));
+  console.log(user);
+
 
   const onChangeInCart = (item) => {
-    axios.patch(`http://localhost:3001/clothes/${item.id}`, { inCart: !item.inCart });
+    const db = getDatabase();
+    set(ref(db, `clothes/${item.id - 1}`), {
+      ...item,
+      inCart: !item.inCart
+    });
 
-    const changedItems = items.map(e => {
+    setItems(prev => prev.map(e => {
       if (e.id === item.id)
         return {
           ...item,
           inCart: !item.inCart
         }
       return e;
-    });
-
-    setItems(changedItems);
+    }));
   };
 
   const onAddToFavorite = (item) => {
-    axios.patch(`http://localhost:3001/clothes/${item.id}`, { favorite: !item.favorite });
+    const db = getDatabase();
+    set(ref(db, `clothes/${item.id - 1}`), {
+      ...item,
+      favorite: !item.favorite
+    });
 
-    const changedItems = items.map(e => {
+    setItems(prev => prev.map(e => {
       if (e.id === item.id)
         return {
           ...item,
           favorite: !item.favorite
         }
       return e;
-    });
-
-    setItems(changedItems);
+    }));
   };
 
   return (
