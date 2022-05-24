@@ -18,6 +18,7 @@ function App() {
   const storageName = 'userData';
 
   const [items, setItems] = useState([]);
+  const [flag, setFlag] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,9 +42,10 @@ function App() {
         token: user.token
       }))
     }
+    setFlag(true);
   }, [])
 
-  
+
 
   const user = JSON.parse(localStorage.getItem(storageName));
   console.log(user);
@@ -84,23 +86,31 @@ function App() {
   };
 
   return (
-    <Routes>
-      <Route path="/" element={
-        <RequireAuth>
-          <MainLayout items={items} onChangeInCart={onChangeInCart} />
-        </RequireAuth>
-      }>
-        <Route index element={<MainPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
-        <Route path="favorites" element={<FavoritesPage
-          items={items.filter(e => e.favorite === true)}
-          onChangeInCart={onChangeInCart}
-          onAddToFavorite={onAddToFavorite} />}
-        />
-        <Route path="profile" element={<ProfilePage />} />
-      </Route>
-      <Route path="login" element={<LoginPage />} />
-      <Route path="register" element={<RegisterPage />} />
-    </Routes>
+    <>
+      {
+        flag
+          ?
+          <Routes>
+            <Route path="/" element={
+              <RequireAuth>
+                <MainLayout items={items} onChangeInCart={onChangeInCart} />
+              </RequireAuth>
+            }>
+              <Route index element={<MainPage items={items} onChangeInCart={onChangeInCart} onAddToFavorite={onAddToFavorite} />} />
+              <Route path="favorites" element={<FavoritesPage
+                items={items.filter(e => e.favorite === true)}
+                onChangeInCart={onChangeInCart}
+                onAddToFavorite={onAddToFavorite} />}
+              />
+              <Route path="profile" element={<ProfilePage />} />
+            </Route>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+          </Routes>
+          :
+          null
+      }
+    </>
   );
 }
 

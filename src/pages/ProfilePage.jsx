@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage() {
+    const navigate = useNavigate();
 
     return (
         <div className="content">
@@ -36,11 +39,11 @@ export default function ProfilePage() {
                         <div className="green-card">
                             <div className="card-object profile-field">
                                 <form>
-                                    <input type="text" placeholder="Номер карты" className="type-2"/>
-                                    <input type="text" placeholder="Фамилия и Имя" className="type-2"/>
+                                    <input type="text" placeholder="Номер карты" className="type-2" />
+                                    <input type="text" placeholder="Фамилия и Имя" className="type-2" />
                                     <div className="half">
-                                        <input type="text" placeholder="MM/YY" className="type-2"/>
-                                        <input type="password" placeholder="CVC" className="type-2"/>
+                                        <input type="text" placeholder="MM/YY" className="type-2" />
+                                        <input type="password" placeholder="CVC" className="type-2" />
                                     </div>
                                 </form>
                             </div>
@@ -51,9 +54,18 @@ export default function ProfilePage() {
                     </div>
                 </div>
             </div>
-    
+
             <div className="profile-page">
-                <button className="profile-exit margin-but-pic">
+                <button className="profile-exit margin-but-pic" onClick={() => {
+                    localStorage.clear();
+
+                    const auth = getAuth();
+                    signOut(auth).then(() => {
+                        navigate("/login", { replace: true });
+                    }).catch((error) => {
+                        // An error happened.
+                    });
+                }}>
                     <span>Выйти из профиля</span>
                 </button>
             </div>
