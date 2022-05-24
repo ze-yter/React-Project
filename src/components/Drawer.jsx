@@ -1,10 +1,43 @@
 import CartItem from "./CartItem";
+import React, { useState, useEffect } from "react";
+import { getDatabase, ref, child, get, set, push } from "firebase/database";
 
-export default function Drawer({ onDelete, onClose, items = [] }) {
+export default function Drawer({ onDelete, onClose, items }) {
+    const [products, setProducts] = useState(items);
+    const [summary, setSummary] = useState(0);
+
+    useEffect(() => {
+        products.map((product) => {
+            setSummary(prev => prev + product.price)
+        })
+    }, [])
+
+
+    const createOrder = () => {
+        const storageName = 'userData';
+        const uid = JSON.parse(localStorage.getItem(storageName)).id;
+        const postListRef = ref(getDatabase(), 'orders');
+        const newPostRef = push(postListRef);
+        set(newPostRef, {
+            products,
+            summary,
+            uid
+        })
+        const db = getDatabase();
+        products.map((item) => {
+            set(ref(db, `clothes/${item.id - 1}`), {
+                ...item,
+                inCart: !item.inCart
+            });
+        })
+        setProducts([]);
+        
+
+    };
 
     return (
         <div className="overlay">
-            {items.length !== 0
+            {products.length !== 0
                 ?
                 <div className="drawer">
                     <div className="title-block">
@@ -13,7 +46,7 @@ export default function Drawer({ onDelete, onClose, items = [] }) {
                     </div>
 
                     <div className="cartList">
-                        {items.map((item) => {
+                        {products.map((item) => {
                             return <CartItem
                                 key={item.id}
                                 item={item}
@@ -25,13 +58,16 @@ export default function Drawer({ onDelete, onClose, items = [] }) {
                     <div className="total-block">
                         <span>Итого:</span>
                         <div></div>
-                        <b>9 905 руб.</b>
+                        <b>{summary} руб.</b>
                     </div>
 
-                        <button className="confirm-button">
-                            <span>Оформить заказ</span>
-                            <img src="/images/arrow.svg" alt="Arrow" className="standard-arrow" />
-                        </button>
+                    <button className="confirm-button" onClick={() => createOrder({
+                        products,
+                        summary
+                    })}>
+                        <span>Оформить заказ</span>
+                        <img src="/images/arrow.svg" alt="Arrow" className="standard-arrow" />
+                    </button>
 
                 </div>
                 :
