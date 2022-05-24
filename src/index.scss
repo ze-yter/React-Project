@@ -4,7 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+  background-size: 2500% 2500%;
   animation: gradient 20s ease infinite;
 }
 
@@ -43,6 +43,8 @@ p {
   display: flex;
 }
 
+
+
 .flex-padding {
     body,
   ul {
@@ -68,6 +70,19 @@ p {
     display: block;
   }
 }
+
+.change-link{
+  margin-top: 40px;
+  font-size: 16px;
+  color: #000000;
+  line-height: 1;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease; 
+  }
+  
+  .change-link:hover{
+  color: #3d3d3d; 
+  }
 
 .change-text{
 font-size: 1.5em;
@@ -434,6 +449,21 @@ header {
   padding: 225px 0;
 }
 
+.register-login {
+  padding-top: 100px;
+  display: grid;
+  justify-content: center;
+}
+
+.center-objects {
+  margin: 10px 0 50px 0;
+  text-align: center;
+}
+
+.center-logo {
+  margin: 0 auto;
+}
+
 .profile-page {
   display: flex;
   justify-content: center;
@@ -460,7 +490,10 @@ header {
   }
 }
 
-
+.center-flex {
+  display: flex;
+  margin: 0 auto;
+}
 
 .margin-but-pr {
   margin: 30px;
@@ -470,6 +503,36 @@ header {
   margin: 15px;
 }
 
+.margin-bot {
+  margin-bottom: 10px;
+}
+
+.enter-button {
+  background-color: #00c2ff;
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 240px;
+  height: 45px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background-color: lighten(#00c2ff, 10%);
+  }
+
+  &:active {
+    background-color: darken(#00c2ff, 10%);
+  }
+
+  span {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+  }
+}
 
 .save-button {
   justify-self: center;

@@ -33,13 +33,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Login page</h1>
+    <div className='register-login'>
+      <h1 className='center-objects margin-bot'>ВОЙТИ В ПРОФИЛЬ</h1>
       <Form
-        title={'Войти'}
         handleClick={handleLogin}
       />
-      <Link to="/register">Register Page</Link>
+      <Link to="/register" className='center-objects'><h3 className='change-link'>Register Page</h3></Link>
+      
+      <img width={60} height={60} src="/images/logo.png" alt="Logo" className="company-logo button center-logo" />
     </div>
   )
 }
